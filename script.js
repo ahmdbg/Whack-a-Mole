@@ -4,7 +4,7 @@ let gameGrid = document.getElementById('gameGrid');
 let scoreDisplay = document.getElementById('score');
 let startButton = document.getElementById('startButton');
 let gameActive = false;
-let timeLeft = 20;
+let timeLeft = 60;
 let timerInterval;
 const timerDisplay = document.getElementById('timer');
 const hitSound = document.getElementById('hitSound');
@@ -31,7 +31,7 @@ function startGame() {
     scoreDisplay.textContent = `Score: ${score}`;
     
     // Reset and show timer
-    timeLeft = 20;
+    timeLeft = 60;
     timerDisplay.style.display = 'block';
     
     // Start timer countdown
