@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Whack-a-Mole Game</title>
+  <link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Whack-a-Mole!</h1>
+<div id="timer" class="timer" style="display: none;">Time: 20s</div>
+<button id="startButton" class="start-button">Play Game!</button>
+<div class="game-grid" id="gameGrid" style="display: none;"></div>
+<div id="score" style="display: none;">Score: 0</div>
+
+<div class="modal" id="gameOverModal">
+    <div class="modal-content">
+        <h2>Game Over!</h2>
+        <p id="finalScore">Your score: 0</p>
+        <button class="play-again" onclick="restartGame()">Play Again</button>
+    </div>
+</div>
+
+<audio id="hitSound" src="./sounds/hit.mp3" preload="auto"></audio>
+<audio id="missSound" src="./sounds/miss.mp3" preload="auto"></audio>
+
+<script src="./script.js"></script>
+</body>
+</html>

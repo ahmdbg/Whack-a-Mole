@@ -1,0 +1,187 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1a1a1a, #2c2c2c);
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+    padding: 20px;
+}
+
+h1 {
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 3em;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    color: #4CAF50;
+}
+
+.timer {
+    font-size: 24px;
+    background: rgba(0,0,0,0.3);
+    padding: 10px 20px;
+    border-radius: 20px;
+    margin-bottom: 15px;
+    color: #4CAF50;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.game-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background: rgba(0,0,0,0.2);
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+}
+
+.hole {
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(#8B4513, #654321);
+    border-radius: 50%;
+    padding-top: 100%;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: inset 0 -8px 0 rgba(0,0,0,0.3);
+    transition: transform 0.1s;
+}
+
+.hole:active {
+    transform: scale(0.95);
+}
+
+.mole {
+    width: 90%;
+    height: 90%;
+    background: url('./assets/download.png') no-repeat center/contain;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: top 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    visibility: hidden; /* Hide mole by default */
+}
+
+.mole.show {
+    top: 50%;
+    visibility: visible; /* Show mole when active */
+}
+
+.mole.hit {
+    animation: whack 0.2s ease-out;
+    background: url('./assets/mole-hit.png') no-repeat center/contain;
+}
+
+@keyframes whack {
+    0% { transform: translate(-50%, -50%) scale(1); }
+    50% { transform: translate(-50%, -50%) scale(0.8); }
+    100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+.hit-effect {
+    position: absolute;
+    pointer-events: none;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
+    transform: translate(-50%, -50%);
+    animation: hitEffect 0.3s ease-out forwards;
+    z-index: 1000;
+}
+
+@keyframes hitEffect {
+    0% { transform: scale(0.5); opacity: 1; }
+    100% { transform: scale(1.5); opacity: 0; }
+}
+
+.up {
+    bottom: 10px;
+}
+
+#score {
+    font-size: 28px;
+    font-weight: bold;
+    color: #4CAF50;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    margin-top: 20px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #333;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.modal h2 {
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.modal p {
+    color: #fff;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.play-again {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.play-again:hover {
+    background-color: #45a049;
+}
+
+.start-button {
+    padding: 15px 30px;
+    font-size: 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 20px 0;
+    transition: background-color 0.3s;
+}
+
+.start-button:hover {
+    background-color: #45a049;
+}
